@@ -30,7 +30,7 @@ logger.level = Logger::INFO
 s = Scanner.new(path: folder_path)
 
 logger.info("###########################################################")
-logger.info("wav2mp3-watcher Started!".center(60))
+logger.info("wav2mp3-watcher V1.0".center(60))
 logger.info("###########################################################")
 
 command = "/usr/local/bin/ffmpeg"
@@ -41,7 +41,7 @@ while true do
   s.items.each do |i|
     file_no_ext = Shellwords.shellescape i[0..-5]
     if system( "#{command}#{input_option}#{file_no_ext}.wav#{format_option}#{file_no_ext}.mp3" )
-      logger.info("Converted file: #{i} to mp3.")
+      logger.info("Processed file: #{i}.")
       File.delete(i) if File.exist?(i)
     end
   end
