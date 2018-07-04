@@ -20,8 +20,9 @@ require 'logger'
 require 'shellwords'
 require_relative('lib/scanner')
 
-log_path = ARGV[1]
+log_path = ARGV[2]
 folder_path = ARGV[0]
+check_path = ARGV[1]
 
 File.open(log_path, 'w') {}
 logger = Logger.new(log_path)
@@ -40,9 +41,15 @@ format_option = " -f mp3 "
 while true do
   s.items.each do |i|
     file_no_ext = Shellwords.shellescape i[0..-5]
-    if system( "#{command}#{input_option}#{file_no_ext}.wav#{format_option}#{file_no_ext}.mp3" )
-      logger.info("Processed file: #{i}.")
-      File.delete(i) if File.exist?(i)
+    if i.start_with?(check_path)
+      if system( "#{command}#{input_option}#{file_no_ext}.wav#{format_option}#{file_no_ext}.mp3" )
+        logger.info("Processed file: #{i}")
+        File.delete(i) if File.exist?(i)
+      end
+    else
+      logger.fatal("Program aborted because \"#{i}\" was not inside the allowed scope (#{check_path})")
+      logger.close
+      exit(false)
     end
   end
   
