@@ -47,7 +47,7 @@ while true do
         File.delete(i) if File.exist?(i)
       end
     else
-      logger.fatal("Program aborted because \"#{i}\" was not inside the allowed scope (#{check_path})")
+      logger.fatal("Program aborted because the file \"#{i}\" was not inside the allowed scope (#{check_path}).")
       logger.close
       exit(false)
     end
