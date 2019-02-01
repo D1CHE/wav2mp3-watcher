@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+        <key>Label</key>
+                <string>com.cs.wav2mp3</string>
+        <key>ProgramArguments</key>
+        <array>
+                <string>/Users/CSServer/scripts/wav2mp3-watcher/init.rb</string>
+                <string>/Volumes/cs-ddp-volume/audiodrive/_namen_en_ref</string>
+                <string>/Volumes/cs-ddp-volume/audiodrive/_namen_en_ref</string>
+                <string>/Volumes/cs-ddp-volume/audiodrive/_namen_en_ref/.wav2mp3-watcher.log</string>
+        </array>
+        <key>RunAtLoad</key>
+                <true/>
+        <key>KeepAlive</key>
+                <true/>
+</dict>
+</plist>
